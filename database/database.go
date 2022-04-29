@@ -35,4 +35,6 @@ func InitDB(conf config.Config) {
 	DB.AutoMigrate(&model.Star{})
 	DB.AutoMigrate(&model.Cerita{})
 	DB.AutoMigrate(&model.Comment{})
+
+	return DB
 }
