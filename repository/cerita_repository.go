@@ -3,35 +3,42 @@ package repository
 import (
 	"fmt"
 
-	"github.com/azifaazka/MiniProject-Novellist/database"
-	"github.com/azifaazka/MiniProject-Novellist/model"
+	"MiniProject-Novellist/domain"
+	"MiniProject-Novellist/model"
+	"gorm.io/gorm"
 )
 
-func CreateStorys(cerita model.Cerita) error {
-	res := database.DB.Create(&cerita)
+type repositoryMysqlLayerStory struct {
+	DB *gorm.DB
+}
+
+func (r *repositoryMysqlLayerStory) CreateStorys(cerita model.Cerita) error {
+	res := r.DB.Create(&cerita)
 	if res.RowsAffected < 1 {
 		return fmt.Errorf("error insert")
 	}
+
 	return nil
 }
 
-func GetAll() []model.Cerita {
+func (r *repositoryMysqlLayerStory) GetAllStory() []model.Cerita {
 	storys := []model.Cerita{}
-	database.DB.Find(&storys)
+	r.DB.Find(&storys)
 
 	return storys
 }
 
-func GetOneStoryByID(id int) (cerita model.Cerita, err error) {
-	res := database.DB.Where("id = ?", id).Find(&cerita)
+func (r *repositoryMysqlLayerStory) GetOneStoryByID(id int) (cerita model.Cerita, err error) {
+	res := r.DB.Where("id = ?", id).Find(&cerita)
 	if res.RowsAffected < 1 {
 		err = fmt.Errorf("not found")
 	}
-	return
+
+	return 
 }
 
-func UpdateOneStoryByID(id int, cerita model.Cerita) error {
-	res := database.DB.Where("id = ?", id).UpdateColumns(&cerita)
+func (r *repositoryMysqlLayerStory) UpdateOneStoryByID(id int, cerita model.Cerita) error {
+	res := r.DB.Where("id = ?", id).UpdateColumns(&cerita)
 	if res.RowsAffected < 1 {
 		return fmt.Errorf("error update")
 	}
@@ -39,8 +46,8 @@ func UpdateOneStoryByID(id int, cerita model.Cerita) error {
 	return nil
 }
 
-func DeleteStoryByID(id int) error {
-	res := database.DB.Delete(&model.Cerita{
+func (r *repositoryMysqlLayerStory) DeleteStoryByID(id int) error {
+	res := r.DB.Delete(&model.Cerita{
 		ID: id,
 	})
 
@@ -49,4 +56,10 @@ func DeleteStoryByID(id int) error {
 	}
 
 	return nil
+}
+
+func NewMysqlRepositoryStory(db *gorm.DB) domain.AdapterRepositoryStory {
+	return &repositoryMysqlLayerStory{
+		DB: db,
+	}
 }

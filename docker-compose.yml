@@ -1,0 +1,28 @@
+version: "3"
+services:
+  app:
+    build: .
+    depends_on:
+      - db
+    volumes:
+      - ./:/go/src/app
+    ports:
+      - 8888:8888
+    environment:
+      MYSQL_DATABASE: novellist
+      MYSQL_HOST: root  
+      MYSQL_USER: azifaazka
+      MYSQL_PASSWORD: 123456
+
+  db:
+    image: mysql:5.7
+    container_name: novellist
+    volumes:
+      - ./storage/mysql_data:/var/lib/mysql
+    ports:
+      - 3306:3306
+    environment:
+      MYSQL_DATABASE: novellist
+      MYSQL_USER: root
+      MYSQL_PASSWORD: 123456
+      MYSQL_ROOT_PASSWORD: 123456

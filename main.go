@@ -2,28 +2,19 @@ package main
 
 import (
 	"github.com/labstack/echo/v4"
-	"github.com/labstack/echo/v4/middleware"
 
-	conf "github.com/azifaazka/MiniProject-Novellist/config"
-	c "github.com/azifaazka/MiniProject-Novellist/controller"
-	db "github.com/azifaazka/MiniProject-Novellist/database"
-	m "github.com/azifaazka/MiniProject-Novellist/middleware"
+	conf "MiniProject-Novellist/config"
+	rest "MiniProject-Novellist/handler"
 )
 
-func init() {
-	config := conf.InitConfiguration()
-	db.InitDB(config)
-}
-
 func main() {
+	config := conf.InitConfiguration()
 	e := echo.New()
-	apiUser := e.Group("/users", 
-		middleware.Logger(),
-		middleware.CORS(),
-		m.APIKEYMiddleware, 
-	)
+	
+	rest.RegisterUserGroupAPI(e, config)
+	rest.RegisterStoryGroupAPI(e, config)
+	rest.RegisterBabGroupAPI(e, config)
+	rest.RegisterCommentGroupAPI(e, config)
 
-	c.RegisterUserGroupAPI(apiUser)
-
-	e.Logger.Fatal(e.Start(":8080"))
+	e.Logger.Fatal(e.Start(config.SERVER_ADDRESS))
 }

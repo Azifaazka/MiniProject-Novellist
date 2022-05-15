@@ -3,12 +3,17 @@ package repository
 import (
 	"fmt"
 
-	"github.com/azifaazka/MiniProject-Novellist/database"
-	"github.com/azifaazka/MiniProject-Novellist/model"
+	"MiniProject-Novellist/domain"
+	"MiniProject-Novellist/model"
+	"gorm.io/gorm"
 )
 
-func CreateUsers(user model.User) error {
-	res := database.DB.Create(&user)
+type repositoryMysqlLayer struct {
+	DB *gorm.DB
+}
+
+func (r *repositoryMysqlLayer) CreateUsers(user model.User) error {
+	res := r.DB.Create(&user)
 	if res.RowsAffected < 1 {
 		return fmt.Errorf("error insert")
 	}
@@ -16,15 +21,15 @@ func CreateUsers(user model.User) error {
 	return nil
 }
 
-func GetAll() []model.User {
+func (r *repositoryMysqlLayer) GetAll() []model.User {
 	users := []model.User{}
-	database.DB.Find(&users)
+	r.DB.Find(&users)
 
 	return users
 }
 
-func GetOneByID(id int) (user model.User, err error) {
-	res := database.DB.Where("id = ?", id).Find(&user)
+func (r *repositoryMysqlLayer) GetOneByID(id int) (user model.User, err error) {
+	res := r.DB.Where("id = ?", id).Find(&user)
 	if res.RowsAffected < 1 {
 		err = fmt.Errorf("not found")
 	}
@@ -32,8 +37,17 @@ func GetOneByID(id int) (user model.User, err error) {
 	return
 }
 
-func UpdateOneByID(id int, user model.User) error {
-	res := database.DB.Where("id = ?", id).UpdateColumns(&user)
+func (r *repositoryMysqlLayer) GetOneByEmail(email string) (user model.User, err error) {
+	res := r.DB.Where("email = ?", email).Find(&user)
+	if res.RowsAffected < 1 {
+		err = fmt.Errorf("not found")
+	}
+
+	return
+}
+
+func (r *repositoryMysqlLayer) UpdateOneByID(id int, user model.User) error {
+	res := r.DB.Where("id = ?", id).UpdateColumns(&user)
 	if res.RowsAffected < 1 {
 		return fmt.Errorf("error update")
 	}
@@ -41,8 +55,8 @@ func UpdateOneByID(id int, user model.User) error {
 	return nil
 }
 
-func DeleteByID(id int) error {
-	res := database.DB.Delete(&model.User{
+func (r *repositoryMysqlLayer) DeleteByID(id int) error {
+	res := r.DB.Delete(&model.User{
 		ID: id,
 	})
 
@@ -51,4 +65,10 @@ func DeleteByID(id int) error {
 	}
 
 	return nil
+}
+
+func NewMysqlRepository(db *gorm.DB) domain.AdapterRepository {
+	return &repositoryMysqlLayer{
+		DB: db,
+	}
 }

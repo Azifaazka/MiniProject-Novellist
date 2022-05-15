@@ -1,8 +1,9 @@
 package model
 
-type Star struct {
+type Comment struct {
 	ID		 	int 		`json:"id" gorm:"primaryKey"`
-	deskcom	 	string  	`json:"deskcom"`
-	ID_Cerita 	Cerita 		`json:"id_cerita" gorm:"foreignkey:"id.cerita"`
-	ID_User 	User 		`json:"id_user" gorm:"foreignkey:"id.user"`
+	Deskcom	 	string  	`json:"deskcom"`
+	IDCerita 	int 		`json:"idcerita" gorm:"foreignkey:"idcerita;references:ID"`
+	IDUser 		int 		`json:"iduser" gorm:"foreignkey:"iduser;references:ID"`
+	
 }

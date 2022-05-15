@@ -2,8 +2,8 @@ package model
 
 type Bab struct {
 	ID		 	int 		`json:"id" gorm:"primaryKey"`
-	Tanggal 	timestamp  	`json:"tanggal"`
-	Judul_bab 	string 		`json:"judulbab"`
-	konten	 	string  	`json:"konten"`
-	ID_Cerita 	Cerita 		`json:"id_cerita" gorm:"foreignkey:"id.cerita"`
+	Tanggal 	string  	`json:"tanggal"`
+	Judulbab 	string 		`json:"judulbab"`
+	Konten	 	string  	`json:"konten"`
+	IDCerita 	int 		`json:"idcerita" gorm:"foreignkey:"idcerita;references:ID"`
 }

@@ -2,8 +2,8 @@ package database
 
 import (
 	"fmt"
-	"github.com/azifaazka/MiniProject-Novellist/config"
-	"github.com/azifaazka/MiniProject-Novellist/model"
+	"MiniProject-Novellist/config"
+	"MiniProject-Novellist/model"
 
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
@@ -14,7 +14,7 @@ var (
 	err error
 )
 
-func InitDB(conf config.Config) {
+func InitDB(conf config.Config) *gorm.DB{
 
 	conectionString := fmt.Sprintf(
 		"%s:%s@tcp(%s:%s)/%s?charset=utf8",
@@ -37,4 +37,5 @@ func InitDB(conf config.Config) {
 	DB.AutoMigrate(&model.Comment{})
 
 	return DB
+	
 }
