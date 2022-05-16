@@ -32,7 +32,6 @@ func InitDB(conf config.Config) *gorm.DB{
 
 	DB.AutoMigrate(&model.User{})
 	DB.AutoMigrate(&model.Bab{})
-	DB.AutoMigrate(&model.Star{})
 	DB.AutoMigrate(&model.Cerita{})
 	DB.AutoMigrate(&model.Comment{})
 

@@ -15,13 +15,13 @@ type Config struct {
 func InitConfiguration() Config {
 
 	return Config{
-		SERVER_ADDRESS: GetOrDefault("SERVER_ADDRESS", "0.0.0.0:8888"),
+		SERVER_ADDRESS: GetOrDefault("SERVER_ADDRESS", "0.0.0.0:8080"),
 		DB_USERNAME: GetOrDefault("DB_USERNAME", "root"),
 		DB_PASSWORD: GetOrDefault("DB_PASSWORD", "123456"),
 		DB_NAME: GetOrDefault("DB_NAME", "novellist"),
 		DB_PORT: GetOrDefault("DB_PORT", "3306"),
 		DB_HOST: GetOrDefault("DB_HOST", "127.0.0.1"),
-		JWT_KEY: GetOrDefault("JWT_KEY", "novel"),
+		JWT_KEY: GetOrDefault("JWT_KEY", "ABC"),
 	}
 }
 
