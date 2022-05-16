@@ -1,7 +1,6 @@
 package service
 
 import (
-	"fmt"
 
 	"MiniProject-Novellist/config"
 	"MiniProject-Novellist/domain"
@@ -17,10 +16,7 @@ func (s *svcBab) CreateBabService(bab model.Bab) error {
 	return s.repo.CreateBabs(bab)
 }
 
-func (s *svcBab) UpdateBabService(id, idToken int, bab model.Bab) error {
-	if id != idToken {
-		return fmt.Errorf("error")
-	}
+func (s *svcBab) UpdateBabService(id int, bab model.Bab) error {
 	return s.repo.UpdateOneBabByID(id, bab)
 }
 

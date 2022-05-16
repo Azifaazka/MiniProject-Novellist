@@ -24,7 +24,7 @@ func (m *MockSvcStory) CreateStoryService(cerita model.Cerita) error {
 	ret := m.Called()
 	return ret.Error(0)
 }
-func (m *MockSvcStory) UpdateStoryService(id, idToken int, cerita model.Cerita) error {return nil}
+func (m *MockSvcStory) UpdateStoryService(id int, cerita model.Cerita) error {return nil}
 func (m *MockSvcStory) GetAllStorysService() []model.Cerita {return []model.Cerita{}}
 func (m *MockSvcStory) GetStoryByID(id int) (model.Cerita, error) {return model.Cerita{}, nil}
 func (m *MockSvcStory) DeleteStorysByID(id int) error {return nil}
@@ -33,7 +33,7 @@ func (m *MockSvcBab) CreateBabService(bab model.Bab) error {
 	ret := m.Called()
 	return ret.Error(0)
 }
-func (m *MockSvcBab) UpdateBabService(id, idToken int, bab model.Bab) error {return nil}
+func (m *MockSvcBab) UpdateBabService(id int, bab model.Bab) error {return nil}
 func (m *MockSvcBab) GetAllBabsService() []model.Bab {return []model.Bab{}}
 func (m *MockSvcBab) GetBabByID(id int) (model.Bab, error) {return model.Bab{}, nil}
 func (m *MockSvcBab) DeleteBabsByID(id int) error {return nil}

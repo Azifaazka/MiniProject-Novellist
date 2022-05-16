@@ -7,7 +7,6 @@ import (
 	"MiniProject-Novellist/config"
 	"MiniProject-Novellist/model"
 	"github.com/stretchr/testify/assert"
-	"github.com/stretchr/testify/mock"
 )
 
 func TestUpdate(t *testing.T) {
@@ -61,31 +60,5 @@ func TestUpdate(t *testing.T) {
 				assert.NoError(t, err)
 			}
 		})
-	}
-}
-
-func BenchmarkUpdateTraditional(t *testing.B) {
-	repo := repoMockTraditional{
-	}
-
-	repo.f = func(id int, user model.User) error {
-		return errors.New("error")
-	}
-	svc := NewServiceUser(&repo, config.Config{})
-
-	for i := 0; i <= t.N; i++ {
-		_ = svc.UpdateUserService(1,2, model.User{})
-	}
-}
-
-func BenchmarkUpdateMockLibrary(t *testing.B) {
-	repo := repoMock{
-	}
-
-	repo.On("UpdateOneByID", mock.Anything, mock.Anything).
-	Return(errors.New("error"))
-	svc := NewServiceUser(&repo, config.Config{})
-	for i := 0; i <= t.N; i++ {
-		_ = svc.UpdateUserService(1,2, model.User{})
 	}
 }

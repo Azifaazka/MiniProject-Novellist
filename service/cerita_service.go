@@ -1,7 +1,6 @@
 package service
 
 import (
-	"fmt"
 
 	"MiniProject-Novellist/config"
 	"MiniProject-Novellist/domain"
@@ -17,10 +16,7 @@ func (s *svcStory) CreateStoryService(cerita model.Cerita) error {
 	return s.repo.CreateStorys(cerita)
 }
 
-func (s *svcStory) UpdateStoryService(id, idToken int, cerita model.Cerita) error {
-	if id != idToken {
-		return fmt.Errorf("error")
-	}
+func (s *svcStory) UpdateStoryService(id int, cerita model.Cerita) error {
 	return s.repo.UpdateOneStoryByID(id, cerita)
 }
 

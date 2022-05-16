@@ -7,7 +7,7 @@ import (
 	"MiniProject-Novellist/config"
 	"MiniProject-Novellist/model"
 	"github.com/stretchr/testify/assert"
-	"github.com/stretchr/testify/mock"
+
 )
 
 func TestUpdateStory(t *testing.T) {
@@ -56,36 +56,10 @@ func TestUpdateStory(t *testing.T) {
 			repo.f = v.f
 	
 			svc := NewServiceStory(&repo, config.Config{})
-			err := svc.UpdateStoryService(v.id,v.token, model.Cerita{})
+			err := svc.UpdateStoryService(v.id, model.Cerita{})
 			if v.noError {
 				assert.NoError(t, err)
 			}
 		})
-	}
-}
-
-func BenchmarkUpdateTraditionalStory(t *testing.B) {
-	repo := repoMockTraditionalStory{
-	}
-
-	repo.f = func(id int, cerita model.Cerita) error {
-		return errors.New("error")
-	}
-	svc := NewServiceStory(&repo, config.Config{})
-
-	for i := 0; i <= t.N; i++ {
-		_ = svc.UpdateStoryService(1,2, model.Cerita{})
-	}
-}
-
-func BenchmarkUpdateMockLibraryStory(t *testing.B) {
-	repo := repoMockStory{
-	}
-
-	repo.On("UpdateOneStoryByID", mock.Anything, mock.Anything).
-	Return(errors.New("error"))
-	svc := NewServiceStory(&repo, config.Config{})
-	for i := 0; i <= t.N; i++ {
-		_ = svc.UpdateStoryService(1,2, model.Cerita{})
 	}
 }

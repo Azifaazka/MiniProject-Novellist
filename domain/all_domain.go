@@ -56,7 +56,7 @@ type AdapterService interface {
 type AdapterServiceStory interface{
 	//untuk cerita
 	CreateStoryService(cerita model.Cerita) error
-	UpdateStoryService(id, idToken int, cerita model.Cerita) error 
+	UpdateStoryService(id int, cerita model.Cerita) error 
 	GetAllStorysService() []model.Cerita 
 	GetStoryByID(id int) (model.Cerita, error) 
 	DeleteStorysByID(id int) error 
@@ -65,7 +65,7 @@ type AdapterServiceStory interface{
 type AdapterServiceBab interface{
 	//untuk bab
 	CreateBabService(bab model.Bab) error 
-	UpdateBabService(id, idToken int, bab model.Bab) error 
+	UpdateBabService(id int, bab model.Bab) error 
 	GetAllBabsService() []model.Bab 
 	GetBabByID(id int) (model.Bab, error) 
 	DeleteBabsByID(id int) error 

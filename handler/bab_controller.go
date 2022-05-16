@@ -5,7 +5,6 @@ import (
 
 	"MiniProject-Novellist/domain"
 	"MiniProject-Novellist/model"
-	"github.com/golang-jwt/jwt"
 	"github.com/labstack/echo/v4"
 )
 
@@ -37,20 +36,15 @@ func (ce *EchoControllerBab) UpdateBabController(c echo.Context) error {
 	bab := model.Bab{}
 	c.Bind(&bab)
 
-	bearer := c.Get("bab").(*jwt.Token)
-	claim := bearer.Claims.(jwt.MapClaims)
-
-	err := ce.svc.UpdateBabService(intID, int(claim["id"].(float64)), bab)
+	err := ce.svc.UpdateBabService(intID, bab)
 	if err != nil {
 		return c.JSON(http.StatusNotFound, map[string]interface{}{
-			"messages": "no id or no change or unauthorization",
+			"messages": "no id or no change",
 		})
 	}
 
 	return c.JSON(http.StatusOK, map[string]interface{}{
 		"messages": "edited",
-		"id": intID,
-		"expeted id": claim["id"],
 	})
 }
 
