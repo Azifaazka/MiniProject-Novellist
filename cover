@@ -52,6 +52,12 @@ MiniProject-Novellist/repository/user_repository.go:58.57,63.26 2 1
 MiniProject-Novellist/repository/user_repository.go:67.2,67.12 1 1
 MiniProject-Novellist/repository/user_repository.go:63.26,65.3 1 0
 MiniProject-Novellist/repository/user_repository.go:70.63,74.2 1 1
+MiniProject-Novellist/service/bab_service.go:15.56,17.2 1 0
+MiniProject-Novellist/service/bab_service.go:19.64,21.2 1 1
+MiniProject-Novellist/service/bab_service.go:23.50,25.2 1 0
+MiniProject-Novellist/service/bab_service.go:27.56,29.2 1 0
+MiniProject-Novellist/service/bab_service.go:31.47,33.2 1 0
+MiniProject-Novellist/service/bab_service.go:35.96,40.2 1 1
 MiniProject-Novellist/service/cerita_service.go:15.66,17.2 1 0
 MiniProject-Novellist/service/cerita_service.go:19.74,21.2 1 1
 MiniProject-Novellist/service/cerita_service.go:23.57,25.2 1 0
@@ -94,12 +100,6 @@ MiniProject-Novellist/service/user_service.go:41.59,43.3 1 0
 MiniProject-Novellist/service/user_service.go:46.16,48.3 1 0
 MiniProject-Novellist/service/user_service.go:53.44,55.2 1 0
 MiniProject-Novellist/service/user_service.go:57.91,62.2 1 1
-MiniProject-Novellist/service/bab_service.go:15.56,17.2 1 0
-MiniProject-Novellist/service/bab_service.go:19.64,21.2 1 1
-MiniProject-Novellist/service/bab_service.go:23.50,25.2 1 0
-MiniProject-Novellist/service/bab_service.go:27.56,29.2 1 0
-MiniProject-Novellist/service/bab_service.go:31.47,33.2 1 0
-MiniProject-Novellist/service/bab_service.go:35.96,40.2 1 1
 MiniProject-Novellist/handler/cerita_controller.go:15.76,20.16 4 1
 MiniProject-Novellist/handler/cerita_controller.go:26.2,29.4 1 1
 MiniProject-Novellist/handler/cerita_controller.go:20.16,24.3 1 1
@@ -141,7 +141,7 @@ MiniProject-Novellist/handler/mock.go:17.77,17.89 1 0
 MiniProject-Novellist/handler/mock.go:18.53,18.76 1 0
 MiniProject-Novellist/handler/mock.go:19.59,19.85 1 0
 MiniProject-Novellist/handler/mock.go:20.67,20.90 1 0
-MiniProject-Novellist/handler/mock.go:21.44,21.56 1 0
+MiniProject-Novellist/handler/mock.go:21.44,21.56 1 1
 MiniProject-Novellist/handler/mock.go:23.70,26.2 2 1
 MiniProject-Novellist/handler/mock.go:27.78,27.90 1 0
 MiniProject-Novellist/handler/mock.go:28.61,28.86 1 0
@@ -168,8 +168,8 @@ MiniProject-Novellist/handler/user_controller.go:22.16,26.3 1 1
 MiniProject-Novellist/handler/user_controller.go:34.70,45.16 8 0
 MiniProject-Novellist/handler/user_controller.go:51.2,55.4 1 0
 MiniProject-Novellist/handler/user_controller.go:45.16,49.3 1 0
-MiniProject-Novellist/handler/user_controller.go:58.70,63.16 4 0
-MiniProject-Novellist/handler/user_controller.go:69.2,71.4 1 0
+MiniProject-Novellist/handler/user_controller.go:58.70,63.16 4 1
+MiniProject-Novellist/handler/user_controller.go:69.2,71.4 1 1
 MiniProject-Novellist/handler/user_controller.go:63.16,67.3 1 0
 MiniProject-Novellist/handler/user_controller.go:74.67,78.16 4 0
 MiniProject-Novellist/handler/user_controller.go:82.2,83.16 2 0
@@ -190,5 +190,5 @@ MiniProject-Novellist/handler/bab_controller.go:40.16,44.3 1 0
 MiniProject-Novellist/handler/bab_controller.go:51.73,56.16 4 0
 MiniProject-Novellist/handler/bab_controller.go:62.2,64.4 1 0
 MiniProject-Novellist/handler/bab_controller.go:56.16,60.3 1 0
-MiniProject-Novellist/handler/bab_controller.go:67.69,72.2 1 0
-MiniProject-Novellist/handler/bab_controller.go:74.70,81.2 2 0
+MiniProject-Novellist/handler/bab_controller.go:67.69,74.2 2 0
+MiniProject-Novellist/handler/bab_controller.go:76.70,83.2 2 0

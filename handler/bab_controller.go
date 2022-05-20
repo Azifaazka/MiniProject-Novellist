@@ -65,9 +65,11 @@ func (ce *EchoControllerBab) DeleteBabsController(c echo.Context) error {
 }
 
 func (ce *EchoControllerBab) GetBabController(c echo.Context) error {
+	babs := ce.svc.GetAllBabsService()
 
 	return c.JSON(http.StatusOK, map[string]interface{}{
 		"messages": "success",
+		"babs": babs,
 	})
 }
 
